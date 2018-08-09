@@ -1,0 +1,115 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    line-height: 25px;
+}
+
+.copyright {
+    padding-top: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.page {
+    position: relative;
+    width: 100%;
+}
+
+.page-break {
+    page-break-after: always;
+}
+
+.page__date {
+    width: 300px;
+    float: left;
+    border-bottom: 1px solid black;
+}
+
+.page__title {
+    padding-top: 10px;
+    width: 300px;
+    float: left;
+    border-bottom: 1px solid black;
+}
+
+.page__teacher {
+    padding-top: 10px;
+    width: 300px;
+    float: left;
+    border-bottom: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+    margin-top: 30px;
+}
+
+table, tr, td {
+    border: 1px solid black;
+}
+
+tbody {
+    vertical-align: top;
+}
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+.row__header {
+    float: left;
+    padding-right: 10px;
+}
+
+.row__content {
+    float: left;
+}
+
+.row {
+    border: 1px solid black;
+}
+
+.row--1 .row__content {
+    height: 25px;
+}
+
+.row--2 .row__content {
+    height: 50px;
+}
+
+.row--3 .row__content {
+    height: 75px;
+}
+
+.row--4 .row__content {
+    height: 100px;
+}
+
+.row--5 .row__content {
+    height: 125px;
+}
+
+.row--6 .row__content {
+    height: 150px;
+}
+
+.row--18 .row__content {
+    height: 450px;
+}
+
+.row--23 .row__content {
+    height: 575px;
+}
+
+td {
+    padding: 5px;
+}

@@ -1,0 +1,15 @@
+name,role_id,classroom_id,email,masterteacher,school
+Vivyan Sanchez,Master Teacher,,sanchezv@unitedwaymiami.org,,Miami
+Teresa Correa,Master Teacher,,correat@unitedwaymiami.org,,Miami
+Hazel Ramirez,Co-teacher,Preschool 1,ramirezh@unitedwaymiami.org,Vivyan Sanchez,Miami
+Lisa Flores,Lead Teacher,Preschool 2,floresL@unitedwaymiami.org,Vivyan Sanchez,Miami
+Karen Corea,Co-teacher,Preschool 2,coreak@unitedwaymiami.org,Vivyan Sanchez,Miami
+Claudia Otalora ,Teacher Assistant,Preschool 2,OtaloraC@unitedwaymiami.org,Vivyan Sanchez,Miami
+Michelle Barrial,Lead Teacher,Preschool 3,barrialm@unitedwaymiami.org,Vivyan Sanchez,Miami
+Lourdes Diaz,Co-teacher,Preschool 3,Diazl@unitedwaymiami.org,Vivyan Sanchez,Miami
+Elliot Bassile,Teacher Assistant,Preschool 3,bassilee@unitedwaymiami.org,Vivyan Sanchez,Miami
+Heidi Reinen Heidi,Lead Teacher,Preschool 4,Minsterh@UnitedWayofMiamiDade.onmicrosoft.com,Vivyan Sanchez,Miami
+Veronica Tabares ,Teacher Assistant,Preschool 4,TabaresV@UnitedWayofMiamiDade.onmicrosoft.com,Vivyan Sanchez,Miami
+Yusley Garcia,Co-teacher,Preschool 4,garciay@unitedwaymiami.org,Vivyan Sanchez,Miami
+Paula Moujalli,School Leader,,moujallip@unitedwaymiami.org,,Miami
+Elaine Lezama,Lead Teacher,Preschool 1,LezamaE@unitedwaymiami.org,Vivyan Sanchez,Miami

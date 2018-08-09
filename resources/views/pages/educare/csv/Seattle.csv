@@ -1,0 +1,22 @@
+name,role_id,classroom_id,email,masterteacher,school
+Angie Swartz,Master Teacher,,aswartz@psesd.org,,Seattle
+Quinn Evans,Master Teacher,,qevans@psesd.org,,Seattle
+Quinn FLanegan,Master Teacher,,qflanegan@psesd.org,,Seattle
+Alisa Torres,Teacher,,atorres@psesd.org,Quinn Evans,Seattle
+Tara Judemon,Teacher,,TJuedeman@psesd.org,Quinn Evans,Seattle
+Maha Shamdeen,Teacher,,MaShamdeen@psesd.org,Quinn Evans,Seattle
+Leigh Smith,Teacher,,LSmith@psesd.org,Quinn FLanegan,Seattle
+Rose Hughes,Teacher,,RHughes@psesd.org,Quinn Evans,Seattle
+Sarath Kong,Teacher Assistant,,SKong@psesd.org,Quinn Evans,Seattle
+Jeannette Guillen,Teacher,5,JGuillen@psesd.org,Angie Swartz,Seattle
+April Savage,Teacher,5,ASavage@psesd.org,Angie Swartz,Seattle
+Ana Enriquez,Teacher Assistant,6,AEnrriquez@psesd.org,Angie Swartz,Seattle
+Saesta Shahnewaz,Teacher,6,SShahnewaz@psesd.org,Angie Swartz,Seattle
+Muey Saetern,Teacher Assistant,8,MSaetern@psesd.org,Angie Swartz,Seattle
+Christine Young,Lead Teacher,9,chyoung@psesd.org,Angie Swartz,Seattle
+Kathy Lee,Teacher Assistant,9,KLee@psesd.org,Angie Swartz,Seattle
+Birikti Debessay,Teacher,6,bdbessay@psesd.org,Angie Swartz,Seattle
+Esperanza Rivera,Assistant Teacher,9,eriveramorales@psesd.org,Angie Swartz,Seattle
+Kaushiema Glenn,Building Assistant Teacher,8,kglenn@psesd.org,Angie Swartz,Seattle
+Asnake Ambaye,Building Para Educator,,aambaye@psesd.org,Angie Swartz,Seattle
+Chandra Mak,Teacher,9,cmak@psesd.org,Angie Swartz,Seattle

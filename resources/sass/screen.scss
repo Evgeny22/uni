@@ -1,0 +1,4425 @@
+
+@import "compass/css3/border-radius";
+@import "compass/css3/box-sizing";
+@import "compass/css3/box-shadow";
+@import "compass/css3/transform";
+@import "compass/css3/transition";
+@import "compass/css3/user-interface";
+@import "compass/reset";
+@import "susy";
+
+$homeMap: (
+        container: auto,
+        math: static,
+        columns: 13,
+        column-width: 65px,
+        gutters: 1/3,
+        global-box-sizing: border-box,
+        debug: (image: hide)
+);
+
+
+$notHomeMap: (
+        container: auto,
+        math: static,
+        columns: 14,
+        column-width: 60px,
+        gutters: 1/3,
+        debug: (image: hide)
+);
+
+
+//$homeMap: layout(auto (65px 20px) static border-box);
+
+/*
+
+  ### Z-INDEX ###
+
+  #popup: 100,
+  .nav-helpers li: 99
+  .left-column: 98
+  .dropdown: 98
+  header: 97
+  main: 90 // no longer applicable
+
+*/
+
+
+
+
+/* VARIABLES */
+$bodyBG: #e3eeee;
+$primaryColor: #6fcfd8;
+$primaryColorAlt: darken(desaturate($primaryColor,25%),18%);
+$secondaryColor: #f27954;
+$actionColor: #63dda2;
+$borderRadius: 12px !important;
+$hoverTransitionDuration: .25s;
+$videoCenterColor: #5380e4;
+$instructionalDesignColor: #e45155;
+$learningModulesColor: #e9a71f;
+$resourcesColor: #838bc9;
+$inputColor: #f2f8f8;
+$textColor2: #919191;
+$textColor: #7e7e7e;
+$placeholderColor: #b8bcbc;
+$leftColumnWidth: 85px;
+$addCommentBG: #f2f8f8;
+$dateTimeColor: #b3c1c1;
+$exemplar: #ffcf6c;
+$error: #e45155;
+
+/* MIXINS */
+@mixin btnHover($btnColor) {
+
+  background-color: darken($btnColor,10%);
+
+}
+
+@mixin centerBoth {
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin centerVertically {
+
+  position: absolute;
+  top: 50%;
+  @include translateY(-50%);
+
+}
+
+@mixin normalWeight {
+
+  font-weight: 300;
+
+}
+
+@mixin semiBoldWeight {
+
+  font-weight: 500;
+
+}
+
+@mixin boldWeight {
+
+  font-weight: 700;
+
+}
+
+@mixin openDropDown {
+
+  position: relative;
+  top: 2px;
+  @include boldWeight;
+  font-size: 1.25em;
+  line-height: 0;
+  color: #d7d7d7;
+
+}
+
+@mixin dropDownHover {
+
+  background-color: lighten(saturate($bodyBG,15%),5%) !important;
+
+}
+
+@mixin type {
+
+  font-family: "tondo", sans-serif;
+
+}
+
+@mixin navOnActive($num) {
+
+  nav li {
+
+    &:nth-of-type(#{$num}) {
+
+      a {
+
+        @include navOn;
+        align-content: inherit;
+
+      }
+
+    }
+
+  }
+
+}
+
+@mixin navOn {
+
+  color: white;
+  background-color: lighten(saturate($primaryColor, 16%),13%);
+
+}
+
+
+* {
+
+  @include box-sizing(border-box);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+input, textarea {
+
+  @include input-placeholder {
+
+    @include type;
+    font-size: 1em !important;
+    font-style: italic;
+
+  }
+
+}
+
+button {
+
+  @include type;
+  @include boldWeight;
+
+}
+
+body, html {
+
+  height: 100%;
+
+}
+
+body {
+
+  min-height: 100%;
+  background-color: $bodyBG;
+  @include type;
+  @include normalWeight;
+
+  &.home {
+
+    background-color: #eff5f5;
+
+    .contain {
+
+      @include layout($homeMap);
+      padding: 0 1em;
+      @include container();
+      z-index: 0;
+
+    }
+
+    .top {
+
+      height: auto;
+      padding: 1em 0;
+
+    }
+
+    header {
+
+      height: 450px;
+      background: url(../img/home_bg.jpg) 0 0 repeat;
+
+      .contain {
+
+        background: url(../img/ESI_mascot.png) 100% 100% no-repeat;
+        height: 100%;
+        position: relative;
+
+        img {
+
+          position: absolute;
+          right: 200px;
+          top: 260px;
+          height: 157px;
+
+        }
+
+      }
+
+    }
+
+    h1 {
+
+      color: white;
+      width: 100%;
+      @include centerVertically;
+      @include boldWeight;
+      font-size: 5em;
+
+    }
+
+    .module {
+
+      @include span(6 of 13);
+      font-size: 1.15em;
+
+      h2 {
+
+        @include boldWeight;
+
+      }
+
+      form {
+
+        width: span(4.5);
+        margin: 0 auto;
+
+        .btn {
+
+          float: right;
+          width: span(2);
+          font-size: .8em;
+
+        }
+
+      }
+
+    }
+
+    .intro {
+
+      @include span(6 of 13 last);
+
+      p {
+
+        color: darken(desaturate($primaryColor,15%), 35%);
+        font-size: 1.1em;
+        @include semiBoldWeight;
+
+      }
+
+      .intro-logos {
+
+        max-width: 100%;
+        float: left;
+        margin: 4em 0 2em;
+
+      }
+
+      .funded-by {
+
+        font-size: .85em;
+        font-style: italic;
+
+      }
+
+    }
+
+  }
+
+  &:not(.home) {
+
+    overflow-x: hidden;
+
+    .contain {
+
+      float: left;
+      padding: 0;
+      margin: 0;
+      @include layout($notHomeMap);
+      @include container();
+      @include box-sizing(content-box);
+      margin-left: 8em;
+      padding-right: 2em;
+
+    }
+
+    .full {
+
+      padding: 0;
+
+    }
+
+    header {
+
+      .contain {
+
+        > * {
+
+
+        }
+
+      }
+
+      h1 {
+
+        @include span(7);
+        padding: 60px 0 0;
+
+      }
+
+      .header-profile {
+
+        @include span(6);
+
+      }
+
+      .profile-pic {
+
+        margin-top: 45px;
+        @include span(1 of 6);
+        height: 56px;
+        margin-right: 0;
+        float: right;
+      }
+
+      .header-name {
+
+        @include boldWeight;
+        margin-top: 55px;
+        //@include span(5 of 6);
+        float: right;
+
+        a {
+
+          color: $primaryColorAlt;
+          text-decoration: none;
+          padding: .75em .5em .75em .75em;
+          margin-left: 1em;
+          @include transition-property(background-color);
+          @include transition-duration($hoverTransitionDuration);
+          @include border-radius($borderRadius);
+          background-color: transparent;
+          float: left;
+
+          &:hover {
+
+            background-color: darken(white,2%);
+
+          }
+
+        }
+
+        .icon {
+
+          @include openDropDown;
+
+        }
+
+      }
+
+      .header-alerts {
+
+        @include span(1 last);
+        margin-top: 50px;
+
+        .icon {
+
+          color: $textColor;
+          font-size: 2.05em;
+
+        }
+
+        > a {
+
+          @include transition-property(background-color);
+          @include transition-duration($hoverTransitionDuration);
+          @include border-radius($borderRadius);
+          background-color: transparent;
+          padding: .5em;
+          float: left;
+
+          &:hover {
+
+            background-color: darken(white,2%);
+
+          }
+
+        }
+
+        .alert-count {
+
+          background-color: $secondaryColor;
+          @include border-radius(50%);
+          color: white;
+          @include boldWeight;
+          padding: 2px 6px;
+          font-size: .8em;
+          position: relative;
+          bottom: 46px;
+          left: 24px;
+          width: 10px;
+          height: 10px;
+
+        }
+
+      }
+
+    }
+
+  }
+
+  &.log-in {
+
+    .top {
+
+      height: auto;
+      padding: 1em 0;
+
+    }
+
+    .contain {
+
+      @include layout($homeMap);
+      @include container();
+      float: none !important;
+
+    }
+
+    label {
+
+      color: $textColor;
+      @include semiBoldWeight;
+      margin-top: 1em;
+      float: left;
+      width: 100%;
+
+      &:first-child {
+
+        margin-top: 0;
+
+      }
+
+    }
+
+    input[type='checkbox'] {
+
+      width: 1em;
+      margin-right: .5em;
+      padding: 0px;
+
+      + span {
+
+        position: relative;
+        @include semiBoldWeight;
+        font-size: .85em;
+        top: .5em;
+        color: $textColor;
+
+      }
+
+    }
+
+    a.forgot-password {
+
+      @include semiBoldWeight;
+
+    }
+
+    header {
+
+      background: url(../img/home_bg.jpg) 0 0 repeat;
+      height: auto;
+
+      h1 {
+
+        color: white;
+        text-align: center;
+        float: none;
+        padding: 1.5em 0;
+        width: 100%;
+        font-size: 2.5em;
+
+      }
+
+    }
+
+    .module {
+
+      float: none !important;
+      margin: 3em auto !important;
+      @include span(6 of 13);
+
+    }
+
+    input {
+
+      font-size: 1em;
+
+    }
+
+    .btn {
+
+      float: right;
+      width: span(2);
+
+    }
+
+  }
+
+  &.dashboard {
+
+    @include navOnActive(1);
+
+    .view-all-comments a, .view-all {
+
+      color: $primaryColor;
+      @include semiBoldWeight;
+
+    }
+
+    .pagination {
+
+      li {
+
+        a {
+
+            color: $secondaryColor;
+
+        }
+
+      }
+
+    }
+
+  }
+
+  &.activity {
+
+    .pagination {
+
+      li {
+
+        a {
+
+          color: $primaryColor;
+
+        }
+
+      }
+
+    }
+
+  }
+
+  &.video-center, &.video {
+
+    .tags-list {
+
+      a {
+
+        color: $videoCenterColor;
+
+      }
+
+    }
+
+  }
+
+  &.video-center {
+
+    @include navOnActive(2);
+
+    .module {
+
+      &:nth-child(even) {
+
+        margin-right: 0;
+
+      }
+
+      h2 {
+
+        @include container(6.5);
+        width: 100%;
+        line-height: 1em;
+
+      }
+
+      .module-content {
+
+        padding-bottom: 1em;
+        padding-right: 0;
+
+      }
+
+      .date-time {
+
+        color: white;
+        @include span(2.5);
+        text-align: left;
+        margin-left: gutter() * 2;
+
+      }
+
+      .duration {
+
+        @include span(1.5 last);
+        font-size: .75em;
+        line-height: 1.5em;
+
+        i {
+
+          font-size: 1.1em;
+
+        }
+
+      }
+
+      .exemplar {
+
+        @include span(1 last);
+
+      }
+
+      .icon-exemplar {
+
+        color: $exemplar;
+        font-size: .875em;
+
+      }
+
+      .post-title {
+
+        @include span(5.25);
+        margin-right: 0;
+
+        h4 {
+
+          margin-bottom: .25em;
+
+        }
+
+        a {
+
+          color: $videoCenterColor;
+          text-decoration: none;
+          padding-bottom: .25em;
+
+          &:hover {
+
+            text-decoration: underline;
+
+          }
+
+        }
+
+      }
+
+    }
+
+    .post-modifications {
+
+      i {
+
+        font-size: .9em;
+
+      }
+
+    }
+
+    .pagination {
+
+      li {
+
+        a {
+
+          color: $videoCenterColor;
+
+        }
+
+      }
+
+    }
+
+  }
+
+  &.video {
+
+
+    .wistia_responsive_padding {
+
+      iframe {
+
+        height: 370px !important;
+
+      }
+
+    }
+
+
+    .default-bg {
+
+      background-color: $videoCenterColor;
+
+    }
+
+    .video-details {
+
+      margin-top: 2em;
+
+      > div {
+
+        //height: 408px;
+
+      }
+
+    }
+
+    #timeline {
+
+      width: 503px;
+      height: 24px;
+      background: lighten($videoCenterColor,35%);
+      float: left;
+      margin-left: 55px;
+      margin-top: 10px;
+      margin: 10px 0 2em 55px;
+      @include border-radius($borderRadius);
+
+      ul {
+
+        float: left;
+        width: 100%;
+        position: relative;
+        height: 30px;
+        bottom: 3px;
+
+        #timeline__ticker-time {
+
+
+
+        }
+
+        li {
+
+          &#timeline__playhead {
+
+            a {
+
+              background: $textColor;
+
+            }
+
+          }
+
+          position: absolute;
+          padding: 0;
+          margin: 0;
+          width: 3px;
+          height: 30px;
+
+          a {
+
+            text-decoration: none;
+            color: transparent;
+            line-height: 1em;
+            float: left;
+            height: 30px;
+            background: $videoCenterColor;
+            display: block;
+            width: 100%;
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+  &.learning-modules, &.learning-module {
+
+    .default-bg {
+
+      background-color: $learningModulesColor;
+
+    }
+
+    .pagination {
+
+      li {
+
+        a {
+
+          color: $learningModulesColor;
+
+        }
+
+      }
+
+    }
+
+  }
+
+  &.instructional-design, &.instructional-design-show {
+
+    @include navOnActive(3);
+
+    .tags-list {
+
+      a {
+
+        color: $instructionalDesignColor;
+
+      }
+
+    }
+
+    .id-details {
+
+      margin-top: 3em;
+
+    }
+
+    .id-form {
+
+      color: $textColor;
+      @include span(11 of 14);
+
+      label {
+
+        margin-top: 2em;
+        @include boldWeight;
+        float: left;
+        width: 100%;
+        line-height: 1.3em;
+        padding-left: .25em;
+
+      }
+
+      textarea {
+
+        min-height: 100px;
+
+      }
+
+      input[type='checkbox'] {
+
+        width: 2em;
+        clear: none;
+        position: relative;
+        bottom: 5px;
+        padding: 0px;
+
+      }
+
+      ul {
+
+        margin-top: 1em;
+        float: left;
+
+        li {
+
+          float: left;
+          margin-right: 2em;
+          @include semiBoldWeight;
+          font-size: .875em;
+
+        }
+
+      }
+
+      button[type='submit'] {
+
+        margin-top: 3em;
+        @include span(3 of 14)
+
+      }
+
+    }
+
+    .pagination {
+
+      li {
+
+        a {
+
+          color: $instructionalDesignColor;
+
+        }
+
+      }
+
+    }
+
+  }
+
+  &.learning-modules {
+
+    @include navOnActive(4);
+
+  }
+
+  &.resources {
+
+    @include navOnActive(5);
+
+  }
+
+  &.users {
+
+    @include navOnActive(6);
+
+  }
+
+  &.message {
+
+    .post {
+
+      border: none;
+      margin-top: 0;
+
+    }
+
+  }
+
+  &.profile {
+/*
+    input[type='file'] {
+
+      position: relative;
+      top: .5em;
+      color: white;
+
+    }
+*/
+  }
+
+  &.users {
+
+    main {
+
+      .profile-pic {
+
+        display: inline-block;
+        width: 18%;
+        padding-right: 5%;
+        vertical-align: top;
+
+      }
+
+      .profile-details {
+
+        display: inline-block;
+        width: 75%;
+        word-break: break-all;
+
+      }
+
+    }
+
+    .user-list {
+
+      width: 100%;
+      float: left;
+
+      li {
+
+        width: 31%;
+        margin: 1.5%;
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        height: 100px;
+        background: darken(white,5%);
+        @include border-radius($borderRadius);
+        @include transition-property(background-color);
+
+        &:hover {
+
+          background-color: darken(white,8%);
+
+        }
+
+        &:nth-of-type(3n-2) {
+
+          margin-left: 0;
+
+        }
+
+        &:nth-of-type(3n-3) {
+
+          margin-right: 0;
+
+        }
+
+        a {
+
+          text-decoration: none;
+          display: block;
+          padding: 1em;
+          width: 100%;
+          float: left;
+          word-wrap: break-word;
+
+
+        }
+
+        h2 {
+
+          color: $textColor;
+          line-height: 1.3em;
+          font-size: .9em;
+          float: left;
+          width: 100%;
+          text-align: left;
+          padding: 0 0 .25em;
+
+        }
+
+        .profile-permission {
+
+          float: left;
+          font-size: .8em;
+          color: $textColor2;
+          @include semiBoldWeight;
+          width: 100%;
+          line-height: 1.5em;
+
+        }
+
+        .profile-email {
+
+          color: $primaryColor;
+          font-size: .85em;
+          @include semiBoldWeight;
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+.full {
+
+  width: 100%;
+  position: relative;
+  float: left;
+
+}
+
+.float-right {
+
+  float: right !important;
+
+}
+
+.row {
+
+  @include layout($notHomeMap);
+  @include container();
+  float: left;
+
+}
+
+.two-thirds {
+
+  @include span(9 of 14);
+
+  + .one-third {
+
+    margin-right: 0px;
+
+  }
+
+  .module {
+
+    width: 100%;
+
+  }
+
+  .post-title {
+
+    width: 100%;
+
+  }
+
+  .icon-triangle-up {
+
+    display: none;
+
+  }
+
+  .comments {
+
+    padding: 0 !important;
+
+    .comment {
+
+      .comment-details {
+
+        @include span(7);
+
+      }
+
+    }
+
+  }
+
+  .add-comment {
+
+    background-color: $addCommentBG;
+    margin-top: 1.5em;
+
+    textarea {
+
+      @include span(7);
+
+    }
+
+  }
+
+}
+
+.one-third {
+
+  @include span(5 of 14);
+
+  article {
+
+    &.supporting-docs {
+
+      background-color: white;
+
+    }
+
+  }
+
+  .post-modifications {
+
+    width: auto;
+
+  }
+
+  .module {
+
+    width: 100%;
+    height: 100%;
+
+  }
+
+}
+
+nav.logged-out {
+
+  margin-top: 40px;
+
+  + a.btn {
+
+    margin-top: 50px;
+
+  }
+
+  ul {
+
+    margin-top: 1.5em;
+
+    li {
+
+      float: left;
+      margin: 0 1em;
+
+      &:first-child {
+
+        margin-left: 0;
+
+      }
+
+      a {
+
+        @include transition-property(color);
+        @include transition-duration($hoverTransitionDuration);
+        color: $primaryColor;
+        text-decoration: none;
+        letter-spacing: .05em;
+
+        &:hover {
+
+          color: darken($primaryColor,20%);
+
+        }
+
+        .icon {
+
+          @include openDropDown;
+
+        }
+
+      }
+
+    }
+
+  }
+
+  @include span(10 of 12);
+
+}
+
+
+.top {
+
+  background-color: white;
+  height: 135px;
+  padding: 40px 0;
+
+}
+
+.left-column {
+
+  width: $leftColumnWidth;
+  float: left;
+  height: 100%;
+  background-color: $primaryColor;
+  padding: 0 .5em;
+  position: fixed;
+  z-index: 98;
+  top: 0;
+  bottom: 0;
+
+  nav {
+
+    margin-top: 2em;
+
+    ul {
+
+      width: 100%;
+
+      li {
+
+        width: 100%;
+        margin: .5em 0;
+        float: left;
+        text-align: center;
+
+        a {
+
+          color: $primaryColorAlt;
+          text-decoration: none;
+          font-size: 1.75em;
+          text-align: center;
+          display: block;
+          padding: .5em 0;
+          background-color: transparent;
+          @include transition-property(color,background-color);
+          @include transition-duration($hoverTransitionDuration);
+
+          @include border-radius($borderRadius);
+
+          &:hover {
+
+            @include navOn;
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+nav {
+
+  ul {
+
+    li {
+
+      a {
+
+        @include boldWeight;
+
+      }
+
+    }
+
+  }
+
+}
+
+.btn {
+
+  text-align: center;
+  border: none;
+  color: white;
+  @include boldWeight;
+  padding: .65em 0;
+  display: block;
+  @include border-radius($borderRadius);
+  text-decoration: none;
+  @include transition-property(background-color);
+  @include transition-duration($hoverTransitionDuration);
+  cursor: pointer;
+  letter-spacing: .075em;
+  margin: .5em 0;
+  font-size: .95em;
+
+  &.btn-action {
+
+    background-color: $actionColor;
+
+    &:hover {
+
+      @include btnHover($actionColor);
+
+    }
+
+  }
+
+  &.btn-primary {
+
+    background-color: $primaryColor;
+
+    &:hover {
+
+      @include btnHover($primaryColor);
+
+    }
+
+  }
+
+  &.btn-secondary {
+
+    background-color: $secondaryColor;
+
+    &:hover {
+
+      @include btnHover($secondaryColor);
+
+    }
+
+  }
+
+  &.btn-vc {
+
+    background-color: $videoCenterColor;
+
+    &:hover {
+
+      @include btnHover($videoCenterColor);
+
+    }
+
+  }
+
+  &.btn-lm {
+
+    background-color: $learningModulesColor;
+
+    &:hover {
+
+      @include btnHover($learningModulesColor);
+
+    }
+
+  }
+
+  &.btn-cancel {
+
+    background-color: $textColor;
+    color: white;
+
+    &:hover {
+
+      @include btnHover($textColor);
+
+    }
+
+  }
+
+  &.btn-login {
+
+    @include span(2 of 12 last);
+    background-color: $secondaryColor;
+    //@include centerVertically;
+
+    &:hover {
+
+      @include btnHover($secondaryColor);
+
+    }
+
+  }
+
+  &.btn-comment {
+
+    background-color: $textColor2;
+
+    &:hover {
+
+      @include btnHover($textColor2);
+
+    }
+
+  }
+
+  &.btn-inline {
+
+    padding: .75em 1em;
+    clear: both;
+
+  }
+
+}
+
+form {
+
+  .errors{
+
+    margin-bottom: 0.5em;
+
+  }
+
+  div.error{
+
+    margin: 1em .25em;
+    line-height: 1.45em;
+    @include boldWeight;
+    margin: 0;
+
+    &:before {
+
+      font-family: 'Esi';
+      content: "\f02b";
+      font-size: 1.2em;
+      margin-right: .5em;
+
+    }
+
+  }
+
+}
+
+#popup, #popup-flash {
+
+  background-color: rgba(black,.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 100;
+  display: none;
+  overflow: scroll;
+
+  .error {
+
+    margin: 0;
+    line-height: 1.45em;
+    @include boldWeight;
+
+    &:before {
+
+      font-family: 'Esi';
+      content: "\f02b";
+      color: $error;
+      font-size: 1.2em;
+      margin-right: .5em;
+
+    }
+
+  }
+
+  .medium-editor-insert-plugin {
+
+    min-height: 200px;
+
+  }
+
+  .module {
+
+    float: none !important;
+    width: 700px;
+    height: auto;
+    margin: 5em auto;
+    cursor: default;
+    display: none;
+
+    .module-content {
+
+      padding: 1em;
+      line-height: 1.5em;
+
+      p {
+
+        @include semiBoldWeight;
+        font-size: 1em;
+        color: $textColor;
+
+      }
+      .change-document {
+
+        p {
+
+          font-size: .75em;
+          @include semiBoldWeight;
+          padding: .5em 0;
+          line-height: 1.5em;
+          float: left;
+          width: 100%;
+          color: $textColor;
+        }
+
+      }
+
+      .tags-input{
+
+        margin-top: 2em;
+
+      }
+
+      .full {
+
+        label{
+
+          float: left;
+          width: 100%;
+          text-transform: capitalize;
+          @include boldWeight;
+          color: $textColor;
+          margin: .5em 0 0;
+
+        }
+
+        ul {
+
+          margin-top: 1em;
+          float: left;
+
+          li {
+
+            float: left;
+            margin-right: 2em;
+            @include semiBoldWeight;
+            font-size: .875em;
+            color: $textColor2;
+
+
+          }
+
+        }
+
+        input[type='checkbox'] {
+
+          width: 2em;
+          clear: none;
+          position: relative;
+          bottom: 11px;
+          padding: 0px;
+
+        }
+
+      }
+
+    }
+
+    input, textarea {
+
+      color: $textColor;
+      font-size: .88625em;
+      margin-top: 1em;
+      margin-bottom: 1em;
+
+      @include input-placeholder {
+
+        color: $textColor;
+
+      }
+
+    }
+
+    textarea {
+
+      height: 200px;
+
+    }
+
+    .select2-selection--multiple {
+
+      background-color: $inputColor;
+      @include border-radius($borderRadius);
+
+      &:before {
+
+        position: absolute;
+        right: .75em;
+        font-family: 'Esi';
+        content: "\f02a";
+        color: $textColor;
+        left: 1em;
+        top: 1em;
+        width: 20px;
+
+      }
+
+    }
+
+    .tags-select{
+
+      .select2-container{
+        margin-top: 1em;
+      }
+
+      .select2-selection--multiple {
+
+        background-color: $inputColor;
+        @include border-radius($borderRadius);
+
+        &:before {
+
+          position: absolute;
+          right: .75em;
+          font-family: 'Esi';
+          content: "\f034";
+          color: $textColor;
+          left: 1em;
+          top: 1em;
+          width: 20px;
+
+        }
+
+      }
+
+    }
+
+    .select2-selection__rendered {
+
+      margin-left: 1.5em;
+
+      &:after {
+
+        content: '';
+
+      }
+
+    }
+
+    .select2-search--inline {
+
+      //margin-left: 1.25em;
+
+    }
+
+
+  }
+
+  .btn-cancel {
+
+    @include span(2);
+    margin-top: 2em;
+
+  }
+
+  .btn {
+
+    &[role='submit'] {
+
+      @include span(2.5);
+      margin-top: 2em;
+
+    }
+
+  }
+
+  .icon-expand {
+
+    float: right;
+    cursor: pointer;
+    color: white;
+    margin-right: 1em;
+
+  }
+
+  .select2-selection__choice {
+
+    font-size: .8em;
+    @include semiBoldWeight;
+    color: $textColor;
+    line-height: 2.25em;
+    margin-top: .75em;
+
+  }
+
+  #upload-video {
+
+    width: 100%;
+    margin: 1em 0 5em;
+
+  }
+
+  article.remove-post {
+
+    p {
+
+      font-size: 1.15em;
+      @include boldWeight;
+
+    }
+
+  }
+
+  .remove-post-title {
+
+    font-style: italic;
+
+  }
+
+}
+
+#popup-flash {
+
+  display: block;
+
+  .module {
+
+    display: block;
+
+  }
+
+  .module-content {
+
+    @include semiBoldWeight;
+    text-align: center;
+    font-size: 1.25em;
+    color: $textColor2;
+
+  }
+
+  .icon-check {
+
+    color: $actionColor;
+    font-size: 2.5em;
+    clear: both;
+    width: 100%;
+
+  }
+
+  button {
+
+    float: none !important;
+    margin: 1.5em auto 1em !important;
+    font-size: .8em;
+
+  }
+
+}
+
+.dropdown {
+
+  background-color: white;
+  @include box-shadow(4px 4px 4px 0px rgba(darken(#e2e2e2,15%),.4));
+  position: absolute;
+  z-index: 98;
+  float: left;
+  display: none;
+
+  ul {
+
+    li {
+
+      float: left;
+      width: 100%;
+      border-top: 1px solid $bodyBG;
+
+      a {
+
+        text-align: center;
+        text-decoration: none;
+        color: $textColor;
+        font-size: 1em;
+        padding: .75em .5em;
+        float: left;
+        width: 100%;
+        @include boldWeight;
+        @include transition-property(background-color);
+        @include transition-duration($hoverTransitionDuration);
+
+        &:hover {
+
+          @include dropDownHover;
+
+        }
+
+        &.prominent {
+
+          background-color: $primaryColorAlt;
+          color: white;
+          @include transition-property(background-color);
+          @include transition-duration($hoverTransitionDuration);
+
+          &:hover {
+
+            background-color: darken($primaryColorAlt,10%) !important;
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+  &.dropdown-account {
+
+    width: 225px;
+
+  }
+
+  &.dropdown-sort {
+
+    width: 225px;
+
+    a {
+
+      &.checked {
+
+        //padding-right: 2em;
+
+        &:after {
+
+          position: absolute;
+          right: .75em;
+          font-family: 'Esi';
+          content: "\f010";
+          color: $actionColor;
+
+        }
+
+      }
+
+    }
+
+  }
+
+  &.dropdown-alerts {
+
+    width: 800px;
+
+    li {
+
+      border-left-style: solid;
+      border-left-width: 5px;
+      border-left-color: transparent;
+
+
+      &.vc {
+
+        border-left-color: $videoCenterColor;
+
+      }
+
+      &.id {
+
+        border-left-color: $instructionalDesignColor;
+
+      }
+
+      &.lm {
+
+        border-left-color: $learningModulesColor;
+
+      }
+
+      &.mb {
+
+        border-left-color: $secondaryColor;
+
+      }
+
+      a {
+
+        text-align: left;
+
+      }
+
+      &:not([class]) {
+
+        border-left: none;
+
+        a {
+
+          text-align: center;
+
+        }
+
+      }
+
+    }
+
+    .date-time {
+
+      @include span(2.5);
+      padding-left: gutter();
+
+    }
+
+    .activity-description {
+
+      @include span(7 last);
+      margin-right: 0;
+      line-height: 1.5em;
+
+    }
+
+  }
+
+  .icon {
+
+    font-size: 1.25em;
+
+  }
+
+}
+
+.content {
+
+  margin-top: 75px;
+  margin-bottom: 75px;
+
+}
+
+.module {
+
+  background-color: white;
+  @include border-radius($borderRadius);
+  margin-bottom: 2em;
+
+  h2 {
+
+    @include border-top-radius($borderRadius);
+    @include boldWeight;
+    font-size: 1.25em;
+    color: white;
+    text-align: center;
+    padding: .75em 0;
+    letter-spacing: .05em;
+
+    .third-bg {
+
+      background-color: $actionColor;
+
+    }
+
+  }
+
+  h5 {
+
+    text-align: left;
+    color: $textColor;
+    font-size: 1.05em;
+    @include boldWeight;
+    padding: .5em 0 .25em;
+
+  }
+
+  &.half {
+
+    @include span(7);
+
+  }
+
+  &.third {
+
+    @include span(4);
+
+  }
+
+  .author-options {
+
+    @include span(1);
+
+    a {
+
+      color: white;
+      opacity: .5;
+      font-size: .75em;
+
+    }
+
+  }
+
+  .module-content {
+
+    overflow: hidden;
+    padding: 2.5em;
+
+    &.pad-wide {
+
+      padding-left: 4em;
+      padding-right: 4em;
+
+    }
+
+    &.pad-narrow {
+
+      padding: 1em;
+
+    }
+
+  }
+
+  input, textarea, .editable-wrap, .styled-select {
+
+    background-color: $inputColor;
+    @include border-radius($borderRadius);
+    color: $inputColor;
+    border: none;
+    padding: .75em 1em;
+    display: block;
+    margin: .6em auto;
+    width: 100%;
+    float: left;
+    color: $textColor;
+    font-size: .8em;
+
+    @include input-placeholder {
+
+      color: $placeholderColor;
+      @include semiBoldWeight;
+      font-size: 1em;
+
+    }
+
+    &:focus {
+
+      outline: 1px solid transparent;
+      background-color: darken($inputColor, 5%);
+
+      @include input-placeholder {
+
+        color: darken($placeholderColor,10%);
+        font-size: 1em;
+
+      }
+
+    }
+
+  }
+
+  .styled-select {
+
+    display:inline-block;
+    cursor:pointer;
+    position:relative;
+    color: $placeholderColor;
+
+    &:active, &:focus {
+
+    }
+
+    select {
+
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-color:transparent;
+      border:none;
+      cursor:pointer;
+      display:inline-block;
+      font-size:1em;
+      margin:0;
+      width:100%;
+      color: $placeholderColor;
+
+      &:focus {
+
+        color: darken($placeholderColor,10%);
+
+      }
+
+    }
+
+    &:before {
+
+      font-family: 'Esi';
+      content:'\f031';
+      color: $placeholderColor;
+      font-size: 1.1em;
+      padding-left:.25em;
+      position:absolute;
+      pointer-events:none;
+      right: 1em;
+
+    }
+
+  }
+
+  textarea {
+
+    background-color: #f4f7f7;
+
+  }
+  .remote-url{
+    width: 100%;
+    margin-top: 3mm;
+    text-decoration: none;
+    color: $resourcesColor;
+    @include semiBoldWeight;
+  }
+
+}
+
+p {
+
+  font-size: .91em;
+  @include normalWeight;
+  padding: .5em 0;
+  line-height: 1.5em;
+  float: left;
+  width: 100%;
+  color: $textColor;
+
+}
+
+strong, b {
+
+  @include boldWeight;
+
+}
+
+i {
+
+  font-style: italic;
+
+}
+
+textarea {
+
+  resize: none;
+
+}
+
+.nav-helpers {
+
+  position: fixed;
+  left: 90px;
+  margin-top: 2em;
+
+  li {
+
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    background-color: $primaryColorAlt;
+    color: white;
+    margin: 1.34em 0;
+    padding: .7em 2em;
+    font-size: .9em;
+    @include semiBoldWeight;
+    text-align: center;
+    float: left;
+    clear: both;
+    @include border-radius($borderRadius);
+
+    .icon {
+
+      position: absolute;
+      left: -8px;
+      bottom: 5px;
+      font-size: 1.8em;
+      color: $primaryColorAlt;
+
+    }
+
+  }
+
+}
+
+header {
+
+  background-color: white;
+  z-index: 97;
+
+  h1 {
+
+    @include boldWeight;
+    color: $textColor;
+    font-size: 1.525em;
+
+    span.sub {
+
+      @include semiBoldWeight;
+      font-size: .725em;
+
+    }
+
+
+  }
+
+}
+
+main {
+
+  margin-top: 4em !important;
+  margin-bottom: 4em !important;
+  position: relative;
+  display: block;
+  z-index: 90;
+
+}
+
+article {
+
+  float: left;
+
+}
+
+
+h2 {
+
+  &.title {
+
+    font-size: 1.5em !important;
+    color: $textColor;
+    @include boldWeight;
+
+  }
+
+}
+
+h3 {
+
+  font-size: 1.125em;
+  color: $textColor2;
+  @include boldWeight;
+  letter-spacing: .025em;
+
+  .icon {
+
+    font-size: 1.2em;
+    position: relative;
+    top: 1px;
+    margin-right: .5em;
+
+  }
+
+  a {
+
+    text-decoration: none;
+    color: inherit;
+
+  }
+
+  &.space-bottom {
+
+    margin-bottom: 2em;
+
+  }
+
+}
+
+#activity {
+
+  margin-bottom: 5em;
+
+  ul {
+
+    margin: 2em 0;
+
+    li {
+
+      margin: .3em 0;
+      float: left;
+      width: 100%;
+      @include layout($notHomeMap);
+      @include container();
+      letter-spacing: .025em;
+
+      &:first-child {
+
+        margin-top: 0;
+
+      }
+
+      a {
+
+        @include border-radius($borderRadius);
+        @include semiBoldWeight;
+        background-color: rgba(white,.5);
+        padding: .5em 1.5em;
+        text-decoration: none;
+        @include span(14);
+        line-height: 1.5em;
+        @include transition-property(background-color);
+        @include transition-duration($hoverTransitionDuration);
+        color: $textColor2;
+
+        &:hover {
+
+          background-color: rgba(white,.85);
+
+        }
+
+        .activity-date {
+
+          float: left;
+          font-size: .69em;
+          @include boldWeight;
+          @include span(2);
+          color: desaturate($primaryColor,50%);
+
+        }
+
+        .activity-description {
+
+          @include span(11);
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+.primary-color {
+
+  color: $primaryColor !important;
+
+}
+
+.primary-bg {
+
+  background-color: $primaryColor;
+
+}
+
+.secondary-color {
+
+  color: $secondaryColor !important;
+
+}
+
+.secondary-bg {
+
+  background-color: $secondaryColor;
+
+}
+
+.third-color {
+
+  color: $actionColor;
+
+}
+
+.action-color {
+
+  color: $actionColor;
+
+}
+
+.third-bg {
+
+  background-color: $actionColor;
+
+}
+
+.vc-color {
+
+  color: $videoCenterColor;
+
+}
+
+.vc-bg {
+
+  background-color: $videoCenterColor;
+
+}
+
+.id-color {
+
+  color: $instructionalDesignColor;
+
+}
+
+.id-bg {
+
+  background-color: $instructionalDesignColor;
+
+}
+
+.lm-color {
+
+  color: $learningModulesColor;
+
+}
+
+.lm-bg {
+
+  background-color: $learningModulesColor;
+
+}
+
+.resources-color {
+
+  color: $resourcesColor;
+
+}
+
+.resources-bg {
+
+  background-color: $resourcesColor;
+
+}
+
+.neutral-bg {
+
+  background-color: $textColor !important;
+
+}
+
+.mb-color  {
+
+  color: $secondaryColor;
+
+}
+
+.profile-pic {
+
+  img {
+
+    width: 100%;
+    @include border-radius(50%);
+
+  }
+
+}
+
+.view-all {
+
+  float: left;
+  font-size: .9em;
+  margin: 1em 2em 0 .5em;
+  @include semiBoldWeight;
+  text-transform: capitalize;
+
+}
+
+.date-time, .small-text {
+
+  color: $dateTimeColor;
+  font-size: .75em;
+
+  strong {
+
+    color: $textColor;
+
+  }
+
+}
+
+.small-text {
+
+  @include semiBoldWeight;
+
+}
+
+.date-time {
+
+  @include boldWeight;
+
+}
+
+.activity-description {
+
+  font-size: .85em;
+  color: $textColor2;
+
+}
+
+.icon-check {
+
+  color: $actionColor;
+
+}
+
+.component-top {
+
+  margin-bottom: 2em;
+
+  .select2-selection--multiple {
+
+    .select2-selection__rendered:after {
+
+      display: none;
+    }
+
+  }
+
+  .icon-search {
+
+    color: $textColor;
+    position: absolute;
+    right: .75em;
+    cursor: pointer;
+    top: .5em;
+
+  }
+
+  .button {
+
+    @include span(3.8);
+    margin-right: 0;
+    position: relative;
+    bottom: 8px;
+
+    .btn {
+
+      @include span(3.5);
+
+    }
+
+  }
+
+  .options {
+
+    @include span(10.4 last);
+
+    .sort, .go-back {
+
+      @include span(2.8);
+      margin-right: 0;
+      text-align: center;
+      padding-bottom: 1em;
+
+      h3 {
+
+        margin-top: 5px;
+
+        a {
+
+          color: inherit;
+          text-decoration: none;
+          padding: .5em;
+
+          &:hover {
+
+
+          }
+
+        }
+
+      }
+
+    }
+
+    .go-back {
+
+      margin-top: 5px;
+
+    }
+
+    .search-by-tag {
+
+      @include span(3.9);
+      position: relative;
+
+      .select2{
+
+        .select2-selection__choice{
+
+          margin: 0.5em 0em 0 0.2em;
+          font-size: .625em;
+          @include semiBoldWeight;
+          color: $textColor;
+          line-height: 2.25em;
+
+        }
+
+      }
+
+      + {
+
+        .search {
+
+          margin-left: 0 !important;
+
+        }
+
+      }
+
+    }
+
+    .search {
+
+      @include span(3.95 last);
+      text-align: right;
+      margin: 0 (gutter() / 2);
+
+      &:last-of-type {
+
+        margin-right: 0;
+
+      }
+
+      input {
+
+        border: none;
+        @include border-radius($borderRadius);
+        width: 100%;
+        font-size: 1em;
+        padding: .5em 2.25em .5em 1em;
+        letter-spacing: .05em;
+        color: $textColor;
+
+        @include input-placeholder {
+
+          color: $placeholderColor;
+
+        }
+
+        &:focus {
+
+          outline: 1px solid transparent;
+          background-color: darken(white, 2%);
+
+          @include input-placeholder {
+
+            color: darken($placeholderColor,10%);
+
+          }
+
+        }
+
+      }
+
+      .icon {
+
+        position: relative;
+        cursor: pointer;
+        bottom: 25px;
+        right: 14px;
+        color: $textColor;
+
+      }
+
+    }
+
+  }
+
+}
+
+.post {
+
+  margin: 1em 0;
+  padding: 2em 0;
+  border-top: 1px solid $bodyBG;
+
+  &:first-of-type {
+
+    border-top: none;
+    margin-top: 0;
+
+  }
+
+  .post-message {
+
+    float: left;
+    width: 100%;
+
+  }
+
+}
+
+.post-title {
+
+  @include span(11 of 13);
+
+  a {
+
+    color: $textColor2;
+    text-decoration: none;
+
+    &:hover {
+
+      text-decoration: underline;
+
+    }
+
+  }
+
+  h4, h2 {
+
+    font-size: 1.275em;
+    @include boldWeight;
+    width: 100%;
+    line-height: 1.25em;
+
+    .profile-pic {
+
+      width: 55px;
+      height: 55px;
+      padding-right: .5em;
+      float: left;
+
+    }
+
+    a {
+
+      text-decoration: none;
+
+    }
+
+  }
+
+  .date-time {
+
+    float: left;
+    margin-top: .75em;
+
+  }
+
+  + .post-message {
+
+    //margin-left: 55px;
+
+  }
+
+}
+
+.post-message {
+
+  float: left;
+  width: 100%;
+  margin: 1em 0 0;
+
+  h5 {
+
+    margin-top: .5em;
+    float: left;
+
+  }
+}
+
+.post-modifications {
+
+  @include span(1 of 13 last);
+  margin-bottom: 1em;
+
+  i {
+
+    cursor: pointer;
+    color: $actionColor;
+    padding: .25em;
+    float: left;
+    font-size: 1.1em;
+
+    &:last-of-type {
+
+      margin-right: 0;
+
+    }
+
+  }
+
+}
+
+.post-message {
+
+  p {
+
+    @include semiBoldWeight;
+
+  }
+
+}
+
+section.learning-modules {
+
+  h2 {
+
+    background-color: $learningModulesColor;
+
+  }
+
+  .date-time {
+
+    color: $learningModulesColor;
+
+  }
+
+  .post-message {
+
+    a {
+
+      color: $learningModulesColor;
+
+    }
+
+  }
+
+}
+
+section.resources {
+
+  h2 {
+
+    background-color: $resourcesColor;
+    text-transform: capitalize;
+
+  }
+
+  .date-time {
+
+    color: $resourcesColor;
+
+  }
+
+}
+
+section.instructional-design {
+
+  h2 {
+
+    &:not(.title) {
+
+      background-color: $instructionalDesignColor;
+
+    }
+
+
+  }
+
+  h4 {
+
+    color: $instructionalDesignColor;
+
+  }
+
+
+}
+
+section.message-board, section.instructional-design {
+
+  .post-top {
+
+    .post-title {
+
+      margin-bottom: 1em;
+
+      .date-time {
+
+        float: left;
+        margin-top: .75em;
+
+      }
+
+    }
+
+  }
+
+}
+
+section.message-board {
+
+  .comments {
+
+    background-color: lighten($bodyBG,4%);
+
+  }
+
+  .comments-triangle {
+
+    color: lighten($bodyBG,4%);
+
+  }
+
+  .add-comment {
+
+    textarea {
+
+      background-color: transparent;
+
+    }
+
+  }
+
+  .post-title {
+
+    a {
+
+      color: $secondaryColor;
+
+    }
+
+  }
+
+  .post-message {
+
+    a {
+
+      color: $secondaryColor;
+
+    }
+
+  }
+
+}
+
+.comments {
+
+  padding: 1em 2em !important;
+
+  .view-all-comments {
+
+    padding-left: .5em;
+    margin-bottom: .5em;
+
+    a {
+
+      text-decoration: none;
+      font-size: .86em;
+
+    }
+
+    .icon {
+
+      font-size: 1.25em;
+      color: $textColor;
+      padding-right: .25em;
+
+    }
+
+  }
+
+  .comment {
+
+    float: left;
+    margin: .65em 0;
+
+    .profile-pic {
+
+      @include span(.5 of 12);
+
+      img {
+
+        width: 30px;
+
+      }
+
+    }
+
+    .date-time {
+
+      padding-left: 3px;
+
+    }
+
+    .comment-details {
+
+      @include span(11 of 12 last);
+      color: $textColor;
+      font-size: .825em;
+
+      p {
+
+        font-size: 1em;
+
+      }
+
+    }
+
+  }
+
+}
+
+
+.comments-triangle {
+
+  position: relative;
+  top: 11px;
+  font-size: 2em;
+  left: 1em;
+  float: left;
+
+}
+
+.add-comment, .add-annotation {
+
+  background-color: $bodyBG;
+
+  .full:nth-of-type(2) {
+
+    display: none;
+    border-top: 1px solid darken($bodyBG,7%);
+    padding-top: .5em;
+
+  }
+
+  .profile-pic {
+
+    width: 32px;
+    @include span(1 of 12);
+    padding: .75em;
+    margin-right: 0;
+
+  }
+
+  textarea {
+
+    border: none;
+    background-color: transparent;
+    @include span(11 of 12);
+    float: left;
+    @include border-radius(0);
+    line-height: 1.5em;
+    background-color: #f4f7f7;
+
+    &:focus {
+
+      background-color: #f4f7f7;
+
+    }
+
+  }
+
+  button {
+
+    &.btn-comment {
+
+      @include push(.5);
+      @include span(2 of 12);
+
+  }
+
+    font-size: .75em;
+    margin-bottom: 1.5em;
+
+  }
+
+  .timestamp {
+
+    float: right;
+    margin: .25em .5em 0 0;
+
+    span {
+
+      float: left;
+
+      &.stamp {
+
+        position: relative;
+        top: .5em;
+        right: .5em;
+
+      }
+
+      &.colon {
+
+        float: left;
+        @include boldWeight;
+        position: relative;
+        top: .25em;
+
+      }
+
+    }
+
+    input {
+
+      float: left;
+      width: 2.75em;
+      background: lighten($textColor,20%);
+      margin: 0 .25em;
+      border-radius: 0px !important;
+      color: white;
+      padding: 0 .25em;
+      height: 24px;
+      text-align: center;
+      letter-spacing: .05em;
+      @include semiBoldWeight;
+
+      &[name='minutes'] {
+
+      }
+
+    }
+
+    #time-stamp-comment {
+
+      padding: .5em;
+
+    }
+
+  }
+
+  .attach {
+
+    @include span(9 of 12);
+    margin-top: .75em;
+    margin-right: 0;
+
+    .icon {
+
+      font-size: 1.35em;
+      cursor: pointer;
+      color: $textColor2;
+      line-height: 0;
+      margin-top: 9px;
+
+    }
+
+  }
+
+}
+
+.stamp-link {
+
+  color: $textColor;
+  @include semiBoldWeight;
+
+}
+#profile-info {
+
+  background-color: white;
+  padding: 3em;
+  @include border-radius($borderRadius);
+
+  h2 {
+
+    color: $primaryColorAlt;
+    font-size: 1.5em;
+    margin-top: .5em;
+
+  }
+
+  .profile-permission {
+
+    font-size: .8em;
+    margin: .5em 0;
+    color: $textColor;
+
+  }
+
+  .profile-email {
+
+    color: $primaryColorAlt;
+    margin: 1em 0;
+
+  }
+
+  .profile-pic {
+
+    @include span(2 of 12);
+    margin-right: gutter() * 3;
+
+  }
+
+  .profile-bio {
+
+    color: $textColor;
+
+  }
+
+  .profile-details {
+
+    @include span(5 of 12);
+
+  }
+
+  .profile-options {
+
+    @include span(3 of 12 last);
+
+  }
+
+}
+
+#edit-profile {
+
+  margin: 0 auto;
+  float: none;
+
+  .profile-pic {
+
+    @include span(1.75 of 12);
+    @include push(1);
+    margin-right: gutter() * 2;
+    margin-bottom: 4em;
+
+  }
+
+  .change-avatar {
+
+    @include span(8 of 12);
+
+    .btn {
+/*
+      @include span(3 of 12);
+*/
+      float: left;
+      padding-left: 1em;
+      padding-right: 1em;
+      width: auto;
+
+    }
+
+    p {
+
+      width: 100%;
+      clear: both;
+
+    }
+
+  }
+
+  .half {
+
+    @include span(6 of 12);
+
+  }
+
+  .third {
+
+    @include span(4 of 12);
+
+  }
+
+  form {
+
+    //@include normalWeight;
+
+  }
+
+  .profile-info-edit {
+
+    label {
+
+      @include span(1.75 of 12);
+      color: $textColor;
+      font-size: .8em;
+      margin-top: 1.5em;
+      @include boldWeight;
+
+    }
+
+  }
+
+  input, textarea {
+
+    @include span(4 of 12);
+    margin: .5em 0;
+
+  }
+
+  textarea {
+
+    height: 150px;
+
+  }
+
+  .btn {
+
+    @include span (2.5 of 12 last);
+    margin-top: 2em;
+    margin-left: 0;
+    margin-right: gutter();
+
+  }
+
+  h3 {
+
+    color: $primaryColorAlt;
+    margin: .5em 0 1em;
+
+  }
+
+}
+
+.component-list {
+
+  border-top: 1px solid $bodyBG;
+  padding: 1.5em 0;
+
+  &:first-child {
+
+    padding-top: 0;
+    border-top: none;
+
+  }
+
+}
+
+.component-list-top {
+
+  margin-top: 1em;
+
+}
+
+.component-list-details {
+
+  @include span(8 of 13);
+  margin-right: gutter() * 2;
+
+  .profile-pic {
+
+    @include span(.75 of 13);
+    margin-top: .25em;
+
+    img {
+
+      margin-bottom: 1em;
+
+    }
+
+  }
+
+  .post-title {
+
+    @include span(8 of 13);
+
+  }
+
+  .component-list-title {
+
+    margin: .5em 0 1.5em;
+
+  }
+
+  .authored-by {
+
+    font-size: .7em;
+    color: $textColor2;
+
+    strong {
+
+      color: $textColor;
+
+    }
+
+  }
+
+  h4 {
+
+    color: $textColor2;
+    line-height: 1.15em;
+
+    a {
+
+      font-size: 1.05em; //1.3125em;
+      text-decoration: none;
+      color: $textColor2;
+      @include boldWeight;
+
+      &:hover {
+
+        text-decoration: underline;
+
+      }
+
+    }
+
+  }
+
+  .date-time {
+
+    font-size: .85em;
+    width: 100%;
+    @include boldWeight;
+    margin-bottom: 1em;
+
+  }
+
+  p {
+
+    @include semiBoldWeight;
+
+  }
+
+  .button {
+
+    float: left;
+    margin: .5em 0;
+
+    .btn {
+
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+
+  }
+
+}
+
+article.supporting-docs {
+
+  margin-bottom: 1em;
+
+  @include span(4 of 13 last);
+  background-color: #eef7f7;
+
+  h2 {
+
+    background-color: $textColor;
+    font-size: 1em;
+
+  }
+
+  .module-content {
+
+    padding-left: 1em;
+    padding-right: 1em;
+
+  }
+
+  li {
+
+    float: left;
+    margin: .5em 0;
+    width: 100%;
+
+    &:last-child {
+
+      margin-top: 1.5em;
+      padding-top: 1em;
+      border-top: 1px solid lighten($textColor2,35%);
+
+    }
+
+    .icon-document-remove {
+
+      color: $actionColor;
+      font-size: .8em;
+      cursor: pointer;
+
+    }
+
+    a, span {
+
+      line-height: 1.5em;
+
+      .icon {
+
+        float: left;
+        height: 100%;
+        width: 50px;
+
+      }
+
+      .icon-pdf {
+
+        color: #db0707;
+        font-size: 1.5em;
+
+      }
+
+      .icon-word {
+
+        color: #2a5699;
+        font-size: 1.5em;
+
+      }
+
+      .icon-excel {
+
+        color: #207245;
+        font-size: 1.50em;
+
+      }
+
+      .icon-image {
+
+        color: #615F5F;
+        font-size: 1.5em;
+
+      }
+
+      .icon-add {
+
+        color: $actionColor;
+        font-size: 2.25em;
+        position: relative;
+        bottom: 8px;
+
+      }
+
+      text-decoration: none;
+      font-size: 0.78125em;
+      padding: .25em 0;
+      @include boldWeight;
+      color: $textColor;
+      width: 100%;
+
+      &:hover {
+
+        color: lighten($textColor,10%);
+
+      }
+
+    }
+
+  }
+
+}
+
+.resource-type {
+
+  @include span(4.25 of 13);
+  margin: 0 (gutter() * 1.75) 2em;
+
+  h2 {
+
+    background-color: $resourcesColor;
+    font-size: 1.05em;
+
+    .icon {
+
+      font-size: 1.5em;
+      color: lighten($resourcesColor,20%);
+      vertical-align: text-bottom;
+      margin-right: .25em;
+
+    }
+
+  }
+
+  &:nth-of-type(3n) {
+
+    margin-right: 0;
+
+  }
+
+  &:first-of-type {
+
+    margin-left: 0;
+
+  }
+
+  &:nth-of-type(4n) {
+
+    margin-left: 0;
+
+  }
+
+  .module-content {
+
+    li {
+
+      margin: 1em 0;
+
+      &:first-child {
+
+        margin-top: 0;
+
+      }
+
+    }
+
+    a {
+
+      text-decoration: none;
+      @include semiBoldWeight;
+      color: darken($resourcesColor,5%);
+      @include transition-property(background-color);
+      @include transition-duration($hoverTransitionDuration);
+
+      &:hover {
+
+        color: lighten($resourcesColor,5%);
+
+      }
+
+    }
+
+  }
+
+}
+
+.select2-container {
+
+  width: 100% !important;
+
+}
+
+.select2-selection, .select2-dropdown {
+
+  border: none !important;
+  font-size: .95em;
+
+}
+
+.select2-container--default {
+
+  .select2-selection--single {
+
+    @include border-radius($borderRadius);
+    height: 32px !important;
+
+  }
+
+   .select2-results__option[aria-selected=true] {
+
+     background: none !important;
+
+   }
+
+}
+
+.select2-selection {
+
+  @include border-radius($borderRadius);
+
+}
+
+.select2-selection__rendered {
+
+  text-align: left !important;
+  padding-left: 1em !important;
+  line-height: 2em !important;
+
+  &:after {
+
+    position: absolute;
+    right: .75em;
+    font-family: 'Esi';
+    content: "\f004";
+    color: $textColor;
+
+  }
+
+}
+
+.select2-selection__placeholder {
+
+  @include semiBoldWeight;
+  font-size: 1em;
+  color: $placeholderColor !important;
+  font-style: italic;
+
+}
+
+.select2-dropdown--below {
+
+  @include box-shadow(4px 4px 4px 0px rgba(darken(#e2e2e2,15%),.4));
+
+}
+
+.select2-selection__arrow b {
+
+  display: none;
+
+}
+
+.select2-results__option--highlighted[aria-selected] {
+
+  background: transparent !important;
+
+}
+
+.select2-results__options {
+
+  border: 6px solid darken($inputColor,6%);
+  max-height: 275px;
+
+}
+
+.select2-results__option {
+
+  float: left;
+  border-top: 1px solid $bodyBG;
+  width: 100%;
+  font-size: .9em;
+  padding: 10px;
+
+  @include transition-property(color,background-color);
+  @include transition-duration($hoverTransitionDuration);
+
+  &:hover {
+
+    background: #f9f9f9 !important;
+
+  }
+
+  a {
+
+    float: left;
+    width: 100%;
+    text-decoration: none;
+
+  }
+
+}
+
+.select2-avatar {
+
+  @include span(.65);
+  margin-left: .5em;
+  height: 32px;
+
+  &.extra-bottom {
+
+    margin-bottom: 1.75em;
+
+  }
+
+}
+
+.select2-name {
+
+  @include boldWeight;
+  color: $textColor;
+  font-size: .9em;
+  position: relative;
+  width: 100%;
+  top: .5em;
+
+}
+
+.tooltipster-default {
+
+  border: none;
+  background-color: darken($textColor2,20%);
+  @include boldWeight;
+
+}
+
+.teacher-list {
+
+  float: left;
+  width: 85%;
+
+  li {
+
+    float: left;
+    width: 30%;
+    margin: 1em 1.5%;
+    padding: 1em .5em;
+    @include border-radius($borderRadius);
+    background-color: lighten($textColor,45%);
+    @include semiBoldWeight;
+    font-size: .9em;
+    line-height: 1.5em;
+    color: $textColor;
+  }
+
+  div {
+
+    &.profile-pic {
+
+      @include span(.65);
+      margin-right: gutter() / 2;
+
+    }
+
+    &:nth-of-type(1) {
+
+      @include span(.5);
+
+    }
+
+    &:nth-of-type(3) {
+
+      @include span(2.5 last);
+      margin-top: .25em;
+
+    }
+
+    &:nth-of-type(4) {
+
+      width: 100%;
+      float: left;
+      text-align: center;
+      //text-align: left;
+      //padding-left: gutter() * 2;
+    }
+
+  }
+
+}
+
+a.medium-insert-buttons-show {
+
+  color: $textColor !important;
+
+}
+
+.editable-wrap {
+
+  float: left;
+  width: 100%;
+  margin: 0 0 1em 0 !important;
+  @include border-radius($borderRadius);
+
+  .medium-editor-placeholder {
+
+    &:after {
+
+      color: $textColor;
+      font-size: 1.1em;
+      font-style: normal;
+      @include semiBoldWeight;
+      line-height: .5em;
+
+    }
+
+  }
+
+  .editor {
+
+  }
+
+  h2 {
+
+    text-align: left;
+    color: $textColor;
+
+  }
+
+  h5 {
+
+    font-size: 1.15em;
+
+  }
+
+  .editable {
+
+    color: $textColor !important;
+
+  }
+
+  p {
+
+    float: none !important;
+    display: block;
+    margin: 0;
+    font-size: 1.1em;
+    color: $textColor;
+    @include semiBoldWeight;
+    margin: 0 !important;
+    width: auto !important;
+
+  }
+
+}
+
+#output {
+
+  margin: .5em 0;
+  width: 100%;
+  float: left;
+  @include semiBoldWeight;
+
+}
+
+.participants , .tags{
+
+  margin-top: 1.5em;
+  padding-top: 1.5em;
+  float: left;
+  width: 100%;
+
+}
+
+.participants-list {
+
+  margin-top: .5em;
+
+  li {
+
+    @include span(.65);
+    margin-top: .5em;
+    margin-right: .75em;
+    display: inline-block;
+
+    .profile-pic {
+
+      width: 100%;
+      margin-right: 0;
+
+      img {
+
+        height: 35px;
+
+      }
+
+    }
+
+  }
+
+}
+
+.tags-list {
+
+  margin-top: .5em;
+
+  li {
+
+    margin-top: .5em;
+    margin-right: .75em;
+    display: inline-block;
+    font-size: 0.7em;
+
+  }
+
+}
+
+ul.pagination {
+
+  text-align: center;
+  width: 100%;
+  margin: 1em auto;
+  float: left;
+
+  li {
+
+    display: inline-block;
+    margin: 0 .35em;
+    @include semiBoldWeight;
+    color: $textColor2;
+
+    a {
+
+      text-decoration: none;
+
+    }
+
+  }
+
+}
+
+.not-found {
+
+  .module {
+
+    width: 400px;
+    margin: 2em auto;
+    text-align: center;
+    overflow: hidden;
+    float: none;
+
+    &.module-content {
+
+      padding: 2em;
+
+    }
+
+    p {
+
+      @include boldWeight;
+      font-size: 1em;
+
+    }
+
+  }
+
+}
+
+.error {
+
+  color: $error;
+
+}
+
+.upper {
+
+  text-transform: uppercase;
+
+}
+
+.float-right {
+
+  float: right;
+
+}
+
+.float-left {
+
+  float: left;
+
+}
+
+.float-none {
+
+  float: none;
+
+}
+
+.no-position {
+
+  position: static;
+
+}
+
+.semi-bold {
+
+  @include semiBoldWeight;
+
+}
+
+.align-right {
+
+  text-align: right;
+
+}
+
+.exemplar-toggle {
+
+  text-align: right;
+  float: right;
+  position: relative;
+  right: 2em;
+  bottom: .2em;
+
+  .icon-exemplar {
+
+    color: $textColor2;
+    font-size: 1.775em;
+    cursor: pointer;
+
+    &.approved {
+
+      color: $exemplar;
+
+    }
+
+    &.requested {
+
+      color: $actionColor;
+
+    }
+
+    &[data-trigger='exemplar-pending'] {
+
+      color: $actionColor;
+
+    }
+
+  }
+
+  .exemplar-alert {
+
+    font-style: italic;
+    font-size: .75em;
+    @include semiBoldWeight;
+
+  }
+
+}
+
+.icon-exemplar {
+
+  &.approved {
+
+    color: $exemplar;
+
+  }
+
+}
+
+.search-by-author {
+
+  @include semiBoldWeight;
+  padding-left: gutter() * 3;
+  display: block;
+  padding-top: .4em;
+
+}
+
+.video-embed-contain {
+
+  margin: 2em 0 1em;
+
+}
+
+.wistia-upload-widget {
+
+  .upload-button {
+
+    background: $actionColor !important;
+    @include border-radius($borderRadius);
+    border: none !important;
+
+    &.hover {
+
+      border: none !important;
+      background-color: lighten($actionColor, 5%) !important;
+
+    }
+
+    &:hover {
+
+      background-color: lighten($actionColor, 5%) !important;
+
+    }
+
+    .upload-media {
+
+      @include type;
+      color: white !important;
+      font-size: 1.1em !important;
+      text-shadow: none !important;
+      letter-spacing: .05em !important;
+      text-transform: uppercase !important;
+
+    }
+
+  }
+
+  + #output {
+
+    p {
+
+      @include semiBoldWeight;
+
+    }
+
+  }
+
+  .progress  {
+
+    @include semiBoldWeight;
+    @include type;
+    border: 1px solid lighten($textColor, 40%);
+    height: 2.5em !important;
+    padding: 0 !important;
+    background: $inputColor !important;
+
+    span {
+
+      top: .75em !important;
+      color: white !important;
+      @include semiBoldWeight;
+      font-size: 1em !important;
+      letter-spacing: .05em !important;
+
+    }
+
+    .progress-bar {
+
+      background: lighten($actionColor, 5%) !important;
+
+    }
+
+    .upload-status {
+
+      width: 100% !important;
+      @include semiBoldWeight;
+
+    }
+
+  }
+
+  .time {
+
+    color: $textColor !important;
+    @include semiBoldWeight;
+    font-size: 1em !important;
+    font-size: .75em !important;
+    float: right;
+    margin-top: 2px;
+
+  }
+
+  a {
+
+    &.cancel {
+
+      top: 41px !important;
+      background: none !important;
+
+      &:after {
+
+        position: absolute;
+        right: .75em;
+        font-family: 'Esi';
+        content: "\f02e";
+        color: $error;
+        left: .05em;
+        top: .09em;
+
+      }
+
+    }
+
+  }
+
+}
+
+#wistia-upload-widget {
+
+  &.wistia-upload-widget {
+
+    margin-top: 1em;
+
+  }
+
+}
+
+.annotations {
+
+  float: left;
+  width: 100%;
+  height: 248px;
+  overflow: auto;
+
+  .annotation {
+
+    float: left;
+    padding: .65em 0;
+
+    &.current {
+
+      border-right: 3px solid $videoCenterColor;
+      background-color: rgba($videoCenterColor,.06);
+
+    }
+
+    .profile-pic {
+
+      @include span(.5 of 12);
+
+      img {
+
+        width: 30px;
+
+      }
+
+    }
+
+    .date-time {
+
+      padding-left: 3px;
+
+    }
+
+    .annotation-details {
+
+      @include span(3.85 of 12 last);
+      color: $textColor;
+      font-size: .825em;
+
+      p {
+
+        font-size: 1em;
+
+      }
+
+    }
+
+  }
+
+
+}
+
+.add-annotation {
+
+  background-color: $addCommentBG;
+  margin-top: .5em;
+  height: 136px;
+
+  .profile-pic {
+
+    @include span(0.9);
+    margin-right: 0;
+
+  }
+
+  textarea {
+
+    @include span(3.95);
+    margin-right: 0;
+
+  }
+
+}
+
+.medium-insert-embeds {
+
+  float: left;
+  width: 100%;
+
+}
+
+.medium-insert-embed, .mediumInsert-embeds {
+
+  position: static;
+  float: left;
+  width: 50%;
+  clear: both;
+
+}
+
+p {
+
+  &.reasoning {
+
+    background-color: beige;
+    font-style: italic;
+    padding-left: .5em;
+    padding-right: .5em;
+    color: #333;
+    padding-top: .25em;
+    padding-bottom: .25em;
+
+  }
+
+}
+
+input[type='file'] {
+
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+
+  + label {
+
+    width: 100%;
+    padding: .5em 1em;
+    float: left;
+    color: white;
+    @include boldWeight;
+    display: inline-block;
+    cursor: pointer;
+
+    &:before {
+
+      font-family: 'Esi';
+      content: "\f033";
+      font-size: 1.5em;
+      margin-right: .5em;
+      color: white;
+      font-weight: 100;
+      vertical-align: initial;
+
+    }
+
+  }
+
+  &:focus + label, &.has-focus + label {
+
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+
+  }
+
+}
+
+.tags-list {
+
+  a {
+
+    @include semiBoldWeight;
+    text-decoration: none;
+
+    &:hover {
+
+      text-decoration: underline;
+
+    }
+
+  }
+
+}
+

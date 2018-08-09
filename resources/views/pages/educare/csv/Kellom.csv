@@ -1,0 +1,11 @@
+name,role_id,classroom_id,email,masterteacher,school
+Kelly Jones,Master Teacher,,kjones@educareomaha.org,,Kellom
+Michelle Sullivan,Master Teacher,,msullivan@educareomaha.org,,Kellom
+Cheryl Brown,Associate Teacher,170,cbrown@educareomaha.org            ,Michelle Sullivan,Kellom
+Brittani Laski,Lead Teacher,170,jlaski@educareomaha.org,Michelle Sullivan,Kellom
+Tonieka Brown,Teacher Assistant,170,tbrown@educareomaha.org,Michelle Sullivan,Kellom
+Cara Anderson,Lead Teacher,173,canderson@educareomaha.org,Michelle Sullivan,Kellom
+Theresa Dodds,Associate Teacher,173,tdodds@educareomaha.org      ,Michelle Sullivan,Kellom
+Emireth Hernandez,Teacher Assistant,173,ehernandez@educareomaha.org,Michelle Sullivan,Kellom
+Jennifer Janzen,Lead Teacher,177,jjanzen@educareomaha.org,Michelle Sullivan,Kellom
+Tireesha Bowie,Teacher Assistant,177,tbowie@educareomaha.org,Michelle Sullivan,Kellom

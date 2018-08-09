@@ -1,0 +1,43 @@
+# Yarrs.yaml accepts all values that normally go in Vagrantfile.
+#
+# For more information and examples, please see the online documentation at
+# https://github.com/ptahdunbar/yarrs-and-yamls
+---
+#hostname: esi.dev
+#box: ubuntu/trusty64
+#ip: "10.10.10.100"
+#update: true
+#nodejs: true
+#memory: 1024
+#
+#sites:
+#  - host: esi.dev
+#    path: /var/www/public
+#    template: .nginx-esi.dev.conf
+#
+#synced_folders:
+#  - host: "."
+#    guest: "/var/www"
+#    # type: "nfs"
+#    owner: "www-data"
+#    group: "www-data"
+#    mount_options:
+#     - dmode=775
+#     - fmode=667
+#
+#php:
+#  - xdebug
+#  - composer
+#  - wp
+#
+#databases:
+#  - esi
+#
+#digital_ocean:
+#  private_key_path: ~/.ssh/artisanmedia-esi
+#  ssh_key_name: artisanmedia-esi
+#  size: 512mb
+
+# variables:
+#     - key: FOO
+#       value: bar

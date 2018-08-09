@@ -1,0 +1,23 @@
+name,role_id,classroom_id,email,masterteacher,school
+Jamie Crouch,Master Teacher,,jcrouch@educareomaha.org,,Indian Hill
+Patti Pagel,Master Teacher,,ppagel@educareomaha.org,,Indian Hill
+Kristina Norwood,Master Teacher,,knorwood@educareomaha.org,,Indian Hill
+Liz deGraw Renna,Master Teacher,,lrenna@educareomaha.org,,Indian Hill
+Casandra Castaneda,Teacher assistant,,ccastandeda@educareomaha.org,Liz deGraw Renna,Indian Hill
+Dacie Hagglund,Lead Teacher,187,dhagglund@educareomaha.org,Liz deGraw Renna,Indian Hill
+Nicole Scott,Lead Teacher,130,nscott@educareomaha.org,Jamie Crouch,Indian Hill
+Ivette Partida,Associate Teacher,130,ipartida@educareomaha.org,Jamie Crouch,Indian Hill
+Marlen Trejo,Teacher Assistant,130,mtrejo-baldera@educareomaha.org,Jamie Crouch,Indian Hill
+Keri-Jo Micek,Associate Teacher,112,kmicek@educareomaha.org,Kristina Norwood,Indian Hill
+Katie Arnold,Lead Teacher,112,karnold@educareomaha.org,Kristina Norwood,Indian Hill
+Diana Molina,Teacher Assistant,112,dmolina@educareomaha.org,Kristina Norwood,Indian Hill
+Jannette Sanchez,Teacher Assistant,116,jsanchez@educareomaha.org,Kristina Norwood,Indian Hill
+Alicia Rodriguez,Associate Teacher,116,arodriguez@educareomaha.org,Kristina Norwood,Indian Hill
+Jocelyn Pichardo,Teacher Assistant,133,jpichardo@educareomaha.org,Kristina Norwood,Indian Hill
+Aby Urbiola,Associate Teacher,133,aurbiola@educareomaha.org,Kristina Norwood,Indian Hill
+Jane Boulter,Lead Teacher,133,jboulter@educareomaha.org,Kristina Norwood,Indian Hill
+Rita Lopez,Teacher Assistant,136,rlopez@educareomaha.org,Kristina Norwood,Indian Hill
+Sofia Novak,Associate Teacher,136,snovak@educareomaha.org,Kristina Norwood,Indian Hill
+Stacey Puett,Lead Teacher,136,spuett@educareomaha.org,Kristina Norwood,Indian Hill
+Catherine (Katie) Barmettler,School Leader,,cbarmettler@educareomaha.org,,Indian Hill
+Brittany May,Lead Teacher,184,bmay@educareomaha.org,Patti Pagel,Indian Hill
